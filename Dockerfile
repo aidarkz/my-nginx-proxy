@@ -11,3 +11,4 @@ RUN mkdir -p /var/cache/nginx/ip-tv-cache && \
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
+# Тестовый комментарий для перезапуска сборки
