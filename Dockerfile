@@ -1,4 +1,13 @@
-FROM nginx:latest
+FROM nginx:stable-alpine
 
+# Копируем конфиги
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY conf/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY conf/conf.d/ /etc/nginx/conf.d/
+
+# Создаем папку для кеша
+RUN mkdir -p /var/cache/nginx/ip-tv-cache && \
+    chown -R nginx:nginx /var/cache/nginx
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
